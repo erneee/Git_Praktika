@@ -17,6 +17,13 @@ class Produktai(Base):
     price = Column("kaina", Float)
     order_products = relationship('OrderProduct', back_populates='product')
 
+class Statusas(Base):
+    __tablename__ = 'status'
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+    orders = relationship('Order', back_populates='status')
+
+
 Base.metadata.create_all(engine)
 Session = sessionmaker(bind=engine)
 session = Session()
