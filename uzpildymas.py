@@ -8,3 +8,8 @@ def add_user(f_name, l_name, email):
     session.add(new_user)
     session.commit()
     print("User added successfully.")
+
+def view_users():
+    users = session.query(Klientas).all()
+    for user in users:
+        print(f"User ID: {user.id}, Name: {user.f_name} {user.l_name}, Email: {user.email}")
