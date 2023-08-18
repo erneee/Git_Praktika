@@ -10,7 +10,12 @@ class Klientas(Base):
     f_name = Column("vardas", String)
     email = Column("el_pastas", String, unique=True)
 
-
+class Produktai(Base):
+    __tablename__ = 'produktai'
+    id = Column(Integer, primary_key=True)
+    name = Column("pavadinimas", String)
+    price = Column("kaina", Float)
+    order_products = relationship('OrderProduct', back_populates='product')
 
 Base.metadata.create_all(engine)
 Session = sessionmaker(bind=engine)
